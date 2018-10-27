@@ -55,7 +55,7 @@ update_shell() {
   local shell_path;
   shell_path="$(command -v zsh)"
 
-  fancy_echo "Changing your shell to zsh ..."
+  fancy_echo "Changing your shell to zsh..."
   if ! grep "$shell_path" /etc/shells > /dev/null 2>&1 ; then
     fancy_echo "Adding '$shell_path' to /etc/shells"
     sudo sh -c "echo $shell_path >> /etc/shells"
@@ -83,7 +83,7 @@ gem_install_or_update() {
 }
 
 if ! command -v brew >/dev/null; then
-  fancy_echo "Installing Homebrew ..."
+  fancy_echo "Installing Homebrew..."
     curl -fsS \
       'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
 
@@ -95,11 +95,11 @@ if ! command -v brew >/dev/null; then
 fi
 
 if brew list | grep -Fq brew-cask; then
-  fancy_echo "Uninstalling old Homebrew-Cask ..."
+  fancy_echo "Uninstalling old Homebrew-Cask..."
   brew uninstall --force brew-cask
 fi
 
-fancy_echo "Updating Homebrew formulae ..."
+fancy_echo "Updating Homebrew formulae..."
 brew update --force # https://github.com/Homebrew/brew/issues/1151
 brew bundle --file=- <<EOF
 tap "thoughtbot/formulae"
@@ -201,7 +201,10 @@ fancy_echo "Installing latest Node..."
 bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 install_asdf_language "nodejs"
 
+fancy_echo "Cleaning up old Homebrew formulae..."
+brew cleanup
+
 if [ -f "$HOME/.laptop.local" ]; then
-  fancy_echo "Running your customizations from ~/.laptop.local ..."
+  fancy_echo "Running your customizations from ~/.laptop.local..."
   . "$HOME/.laptop.local"
 fi
