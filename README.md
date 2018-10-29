@@ -1,6 +1,12 @@
 # Usage
 
-Clone this repo, navigate to the root, and run `sh sparkplug`.
+1) Install Xcode
+
+2) Download the script with curl:
+`curl --remote-name https://raw.githubusercontent.com/enginecommerce/sparkplug/master/sparkplug`
+
+3) Run the script:
+`sh sparkplug`
 
 # Contents
 
