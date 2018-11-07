@@ -126,7 +126,7 @@ brew "fzy"
 brew "lazygit"
 
 # Heroku
-brew "heroku"
+brew "heroku/brew/heroku"
 brew "parity"
 
 # GitHub
